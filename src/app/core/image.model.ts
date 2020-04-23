@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { Adapter } from './adapter';
 
 export class Image {
-    constructor(
-      public id: number,
-      public previewURL: string,
-      public webformatURL: string,
-    ) { }
-  }
+  constructor(
+    public id: number,
+    public previewURL: string,
+    public webformatURL: string,
+  ) { }
+}
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class ImageAdapter implements Adapter<Image> {
 

@@ -11,12 +11,25 @@ import { Image } from './core/image.model';
 export class AppComponent {
   @ViewChild('form') form: NgForm;
 
-  images : Image[];
+  images: Image[];
+  totalResults: number;
+  query: string;
 
-  constructor(private imageService: ImageService) { }
+  constructor(private imageService: ImageService) {
+    this.images = [];
+  }
 
   onSubmit() {
-    this.imageService.getImages(this.form.value.query).subscribe(response => {
+    this.images = [];
+    this.query = this.form.value.query;
+    this.imageService.getImages({ q: this.query, page: 1 }).subscribe(response => {
+      this.images = response;
+      this.totalResults = this.imageService.totalResults;
+    });
+  }
+
+  onPageChange(page : number) {
+    this.imageService.getImages({ q: this.query, page }).subscribe(response => {
       this.images = response;
     });
   }

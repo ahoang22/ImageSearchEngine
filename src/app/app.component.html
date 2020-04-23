@@ -7,5 +7,8 @@
       </div>
     </div>
   </form>
-  <app-image-gallery [images]="images"></app-image-gallery>
+  <ng-container *ngIf="images.length">
+    <app-image-gallery [images]="images"></app-image-gallery>
+    <ngb-pagination [pageSize]="images.length" [collectionSize]="totalResults" [maxSize]="5" (pageChange)="onPageChange($event)"  [boundaryLinks]="true"></ngb-pagination>
+  </ng-container>
 </div>

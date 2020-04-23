@@ -1,9 +1,5 @@
-<!-- Grid row -->
 <div class="gallery" id="gallery">
-    <!-- Grid column -->
     <div *ngFor="let image of images; trackBy: trackByFn" class="mb-3 pics animation all 2">
         <img class="img-fluid" [src]="image.webformatURL" alt="Card image cap">
     </div>
-    <!-- Grid column -->
 </div>
-<!-- Grid row -->
